@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display:ital,wght@1,500&display=swap');
+/* You're welcome to change any of this! */
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0px;
+   font-family: 'Merriweather', serif;
+   color: rgb(41, 37, 96);
+}
+header {
+   font-family: 'Playfair Display', serif;
+   font-weight: bold;
+}
+header img {
+   float: right;
+   padding-right: 100px;
+}
+h2 {
+   font-family: 'Playfair Display', serif;
+   color: darkslateblue;
+}
+header, section {
+   padding: 20px;
+}
+p, li {
+   line-height: 1.5em;
+}
+
+#inspiration {
+   background-color: #d9bfeb;
+   padding-top: 40px;
+   padding-bottom: 40px;
+}
