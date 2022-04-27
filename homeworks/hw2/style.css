@@ -1,0 +1,257 @@
+body {
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    color: #fff;
+}
+a, a:hover, a:visited, a:active { 
+    color: #fff;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/**********/
+/* Layout */
+/**********/
+aside, footer, header, nav, section, article {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    overflow: hidden;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: auto 100px;
+    grid-template-areas:
+       "left main"
+       "bottom bottom";
+    height: 100vh;
+}
+aside {
+    background-color: #000;
+    grid-area: left;
+}
+header {
+    background: #111;
+    position: fixed;
+    width: calc(100vw - 250px);
+    left: 250px;
+}
+
+main {
+    background: #111;
+    grid-area: main;
+    min-height: calc(350px);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    z-index: 3;
+}
+
+nav {
+    margin-top: 100px;
+}
+
+footer {
+    background: #222;
+    grid-area: bottom;
+}
+
+
+/***************************/
+/* Accessories & Florishes */
+/***************************/
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box;
+    min-height: 30px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.3);
+}
+
+/***************************/
+/* Part A: Left Navigation */
+/***************************/
+
+aside {
+    align-items: left;
+    padding: 10px;
+    display: flexbox;
+}
+
+h1 {
+    margin-bottom: 25px;
+}
+
+aside a {
+    font-family: Arial;
+    color: lightgrey;
+    padding: 6px;
+    margin: 5px;
+}
+
+aside a i {
+    padding: 5px;
+}
+
+aside i {
+    margin-right: 2%;
+}
+
+aside .selected {
+    border-left: 3px solid limegreen;
+}
+
+
+
+/********************************/
+/* Part B: Header & Nav Styling */
+/********************************/
+
+/* Your Code Here */
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 2px;
+    padding-top: 20px;
+    z-index: 10000;
+}
+
+header a {
+    margin: 12px;
+    border: solid lightgrey;
+    text-align: center;
+    font: Arial;
+    border-radius: 20px;
+    padding: 5px;
+    text-transform: uppercase;
+    width: 150px;
+}
+
+#profile {
+    background-color: rgb(50, 50, 50);
+    color: lightgray;
+    border-color: rgb(50, 50, 50);
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 5px;
+}
+
+nav a {
+    margin: 15px;
+    text-align: center;
+    font: Arial;
+    text-transform: uppercase;
+    color: lightgray;
+    letter-spacing: 1px;
+}
+
+nav .selected {
+    border-bottom: 3px solid limegreen;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+/*************************/
+/* Part C: Artists Panel */
+/*************************/
+
+/* Your Code Here */
+article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+article section {
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 1mm;
+}
+
+.artist-card > div {
+    border: transparent 1px #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(50, 50, 50);
+}
+
+.artist-card div img {
+    max-width: 80%;
+    /*height: 110px;*/
+    border-radius: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 15%;
+  }
+.artist-card div h2 {
+    font-size: 110%;
+}
+
+.artist-card div p {
+    line-height: 0px;
+    font-size: 85%;
+    margin-bottom: 40%;
+}
+
+.artist-card div button {
+    display: none;
+}
+/**************************/
+/* Part D: Responsive UIs */
+/**************************/
+
+/* Your Code Here */
+
+@media screen and (max-width: 1200px) {
+    .article section {
+        width: 33.3%;
+    }
+    .artist-card div {
+        height: 100%;
+    }
+    body {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    
+    .article section {
+        width: 50%;
+    }
+    .artist-card div {
+        height: 100%;
+    }
+    body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 100px;
+        grid-template-areas:
+        "main"
+        "bottom";
+        height: 100vh;
+    }
+    aside {
+        display: none;
+    }
+    #upgrade{
+        display:none;
+    }
+}
+
+
