@@ -212,6 +212,11 @@ article section {
 .artist-card div button {
     display: none;
 }
+
+.controls button {
+    background: none;
+    border: none;
+}
 /**************************/
 /* Part D: Responsive UIs */
 /**************************/
@@ -219,28 +224,25 @@ article section {
 /* Your Code Here */
 
 @media screen and (max-width: 1200px) {
-    .article section {
+    article section {
         width: 33.3%;
     }
     .artist-card div {
         height: 100%;
     }
-    body {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
     
-    .article section {
+    article section {
         width: 50%;
     }
     .artist-card div {
         height: 100%;
     }
     body {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto 100px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
         grid-template-areas:
         "main"
         "bottom";
@@ -251,6 +253,9 @@ article section {
     }
     #upgrade{
         display:none;
+    }
+    footer {
+        width: 100%;
     }
 }
 
