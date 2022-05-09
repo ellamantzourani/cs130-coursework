@@ -42,3 +42,68 @@ const initScreen = () => {
 };
 
 initScreen();
+//Part 1:
+
+
+// create event handler:
+const showImage = (ev) => {
+    const elem = ev.currentTarget;
+    //console.log(elem.style.backgroundImage);
+    currentIndex = parseInt(elem.dataset.index);
+    //console.log("currentIndex:", currentIndex);
+    const image = images[currentIndex];
+
+
+    // your job: set the .featured_image's backgroundImage to the
+    // element that was just clicked.
+    //destinationElement.style.backgroundImage = sourceElement.style.backgroundImage;
+    document.querySelector('.featured_image').style.backgroundImage = `url('${image}')`;
+
+};
+
+// attach event handler to all of the image tags 
+// (after initScreen() has been invoked).
+
+// first get all of the image elements from the DOM:
+const imageElements = document.querySelectorAll('.image');
+
+// then loop through each one and attach an event handler
+// to each element's click event:
+for (const elem of imageElements) {
+    elem.onclick = showImage;
+}
+
+//Part 2:
+
+let currentIndex = 0;
+
+
+const showNext = (ev) => {
+    currentIndex += 1;
+    //console.log("currentIndex:", currentIndex);
+    // update .featured_image
+    if (currentIndex >= images.length){
+        currentIndex = 0;
+    }
+    const img = images[currentIndex];
+    document.querySelector('.featured_image').style.backgroundImage = `url('${img}')`;
+
+};
+
+const showPrev = (ev) => {
+    currentIndex -= 1;
+    //console.log("currentIndex:", currentIndex);
+    // update .featured_image
+    if (currentIndex < 0){
+        currentIndex = (images.length - 1);
+    }
+    const img = images[currentIndex];
+    document.querySelector('.featured_image').style.backgroundImage = `url('${img}')`;
+
+};
+
+
+
+document.querySelector('.next').onclick = showNext;
+document.querySelector('.prev').onclick = showPrev;
+document.querySelector('.featured_image').onclick = showNext;
