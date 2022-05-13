@@ -55,11 +55,41 @@ const track2Html = (track) => {
 };
 
 const getAlbums = (term) => {
-  console.log(`
-        get albums from spotify based on the search term
-        "${term}" and load them into the #albums section 
-        of the DOM...`);
+    let url = `https://www.apitutor.org/spotify/simple/v1/search?type=album&q=${term}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length > 0) {
+            let firstAlbum = data[0];
+
+            //   create a function that converts this data to html
+    
+            let html = album2Html(firstAlbum);
+    
+            // plug that html into the index.html file
+            document.querySelector("#album").innerHTML = html;
+        } else {
+          let html = "<p>No albums were returned.</p>";
+          document.querySelector("#album").innerHTML = html;
+        }
+      });
 };
+
+const album2Html = (album) => {
+    return `
+        <section class="album-card" id="${album.id}">
+            <div>
+                <img src="${album.image_url}">
+                <h2>${album.name}</h2>
+                <div class="footer">
+                    <a href="${album.spotify_url}" target="_blank">
+                        view on spotify
+                    </a>
+                </div>
+            </div>
+        </section>
+    `;
+}
 
 const getArtist = (term) => {
   let url = `https://www.apitutor.org/spotify/simple/v1/search?type=artist&q=${term}`;
