@@ -60,17 +60,12 @@ const getAlbums = (term) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
-            let firstAlbum = data[0];
-
-            //   create a function that converts this data to html
-    
-            let html = album2Html(firstAlbum);
-    
-            // plug that html into the index.html file
-            document.querySelector("#album").innerHTML = html;
+          for (let i = 0; i<data.length; i++){
+            document.querySelector("#albums").innerHTML += album2Html(data[i]);
+          }
         } else {
           let html = "<p>No albums were returned.</p>";
-          document.querySelector("#album").innerHTML = html;
+          document.querySelector("#albums").innerHTML = html;
         }
       });
 };
@@ -130,7 +125,13 @@ const artist2Html = (artist) => {
 
 const handleTrackClick = (ev) => {
   const previewUrl = ev.currentTarget.getAttribute("data-preview-track");
-  console.log(previewUrl);
+  if (previewUrl) {
+    audioPlayer.setAudioFile(previewUrl);
+    audioPlayer.play();
+  }
+  else {
+      console.log('Error: No preview available for this track.')
+  }
 };
 
 document.querySelector("#search").onkeyup = (ev) => {
